@@ -1,0 +1,277 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="content-section containerx">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">แบบขอบัญชีผู้ใช้งาน กรมอุทยานแห่งชาติ สัตว์ป่า และพันธุ์พืช</legend>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.firstname.label(class="form-control-label", placeholder="Firstname", autocomplete="off") }}
+                        {% if form.firstname.errors %}
+                        {{ form.firstname(class="form-control form-control-lg is-invalid", placeholder="",
+                        autocomplete="off") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.firstname.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.firstname(class="form-control form-control-lg", placeholder="", autocomplete="off") }}
+                        {% endif %}
+                    </div>
+
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.lastname.label(class="form-control-label", placeholder="", autocomplete="off") }}
+                        {% if form.lastname.errors %}
+                        {{ form.lastname(class="form-control form-control-lg is-invalid", placeholder="",
+                        autocomplete="off") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.lastname.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.lastname(class="form-control form-control-lg", placeholder="", autocomplete="off") }}
+                        {% endif %}
+                    </div>
+                
+                </div>
+            </div>
+         
+            
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.idcard.label(class="form-control-label", placeholder="ID Card", autocomplete="off") }}
+                        {% if form.idcard.errors %}
+                        {{ form.idcard(class="form-control form-control-lg is-invalid", placeholder="",
+                        autocomplete="off") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.idcard.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.idcard(class="form-control form-control-lg", placeholder="", autocomplete="off") }}
+                        {% endif %}
+                    </div>
+
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.email.label(class="form-control-label", placeholder="Email", autocomplete="off") }}
+                        {% if form.telephone.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid", placeholder="",
+                        autocomplete="off") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.email(class="form-control form-control-lg", placeholder="", autocomplete="off") }}
+                        {% endif %}
+                    </div>
+
+                </div>
+
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.telephone.label(class="form-control-label", placeholder="Telephone Number", autocomplete="off") }}
+                        {% if form.telephone.errors %}
+                        {{ form.telephone(class="form-control form-control-lg is-invalid", placeholder="",
+                        autocomplete="off") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.telephone.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.telephone(class="form-control form-control-lg", placeholder="", autocomplete="off") }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.mobile.label(class="form-control-label", placeholder="Mobile Number", autocomplete="off") }}
+                        {% if form.mobile.errors %}
+                        {{ form.mobile(class="form-control form-control-lg is-invalid", placeholder="",
+                        autocomplete="off") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.mobile.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.mobile(class="form-control form-control-lg", placeholder="", autocomplete="off") }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.level.label(class="form-control-label", placeholder="ID Card", autocomplete="off") }}
+                        {% if form.level.errors %}
+                        {{ form.level(class="form-control form-control-lg is-invalid", placeholder="",
+                        autocomplete="off") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.level.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.level(class="form-control form-control-lg", placeholder="", autocomplete="off") }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.position.label(class="form-control-label", placeholder="position", autocomplete="off") }}
+                        {% if form.position.errors %}
+                        {{ form.position(class="form-control form-control-lg is-invalid", placeholder="ตำแหน่ง",
+                        autocomplete="off") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.position.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.position(class="form-control form-control-lg", placeholder="", autocomplete="off") }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.department.label(class="form-control-label", placeholder="Mobile Number", autocomplete="off") }}
+                        {% if form.department.errors %}
+                        {{ form.department(class="form-control form-control-lg is-invalid", placeholder="",
+                        autocomplete="off") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.department.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.department(class="form-control form-control-lg", placeholder="", autocomplete="off") }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.office.label(class="form-control-label", placeholder="Telephone Number", autocomplete="off") }}
+                        {% if form.office.errors %}
+                        {{ form.office(class="form-control form-control-lg is-invalid", placeholder="",
+                        autocomplete="off") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.office.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.office(class="form-control form-control-lg", placeholder="", autocomplete="off") }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.branch.label(class="form-control-label", placeholder="Mobile Number", autocomplete="off") }}
+                        {% if form.branch.errors %}
+                        {{ form.branch(class="form-control form-control-lg is-invalid", placeholder="",
+                        autocomplete="off") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.branch.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.branch(class="form-control form-control-lg", placeholder="", autocomplete="off") }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form.username.label(class="form-control-label", placeholder="username", autocomplete="off") }}
+                {% if form.username.errors %}
+                {{ form.username(class="form-control form-control-lg is-invalid", placeholder="",
+                autocomplete="off") }}
+                <div class="invalid-feedback">
+                    {% for error in form.username.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.username(class="form-control form-control-lg", placeholder="", autocomplete="off") }}
+                {% endif %}
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.password.label(class="form-control-label") }}
+                        {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.password(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.confirm_password.label(class="form-control-label") }}
+                        {% if form.confirm_password.errors %}
+                        {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.confirm_password.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.confirm_password(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+
+                </div>
+
+            </div>
+            
+            
+        </fieldset>
+        <div class="form-group" style="DISPLAY: inline-grid ;align: center">
+
+                {{ form.recaptcha }}
+                {{ form.submit(class="btn btn-outline-info") }}
+            
+        </div>
+    </form>
+</div>
+<script>
+    function changeuser()
+    {
+        
+        fn = document.getElementById("firstname");
+        ln = document.getElementById("lastname");
+        un = document.getElementById("username");
+        user = fn.value + "." + ln.value.substring(0, 3)
+        un.value = user.toLowerCase()
+        //console.log(ln.value)
+    }
+</script>
+{% endblock content %}
