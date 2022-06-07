@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 # import class and constants
+from ast import Try
 import ssl
 import json
 #from jsondb import Database
@@ -170,41 +171,36 @@ def reset_passwd(domain, user_admin, passwd_admin, basedn, username, current, ne
 
 
 def new_user(domain, user_admin, passwd_admin, basedn, domain_name, user):
-    conn = conx(domain, domain_name, user_admin, passwd_admin)
-
-    fullname = user['firstname'] + ' ' + user['lastname']
-    # userdn = 'CN='+user['username'] + \
-    #    ',OU=Users,OU=Staff,OU=dnp OU,DC=testdnp,DC=go,DC=th'
-    userdn = "CN={},OU={},{}".format(
-        user['username'], user['level'], basedn)
-    print(userdn)
-    entry = {
-        "objectClass": ["person", "organizationalPerson", "user", "top"],
-        "sAMAccountName": user['username'],
-        "displayName": user['username'],
-        'userPrincipalName': "{}@{}".format(user['username'], domain_name),
-        "givenname": user['firstname'],
-        "sn": user['lastname'],
-        "mail": user['email'],
-        "employeeID": str(user['idcard']),
-        "telephoneNumber": str(user['telephone']),
-        "mobile": str(user['mobile']),
-        "Description": str(user['position']),
-        "Department": str(user['department']),
-        "Company": str(user['office']),
-        "Street": str(user['branch'])
-    }
-    print(entry)
-    result = conn.add(userdn, attributes=entry)
-    if result:
-        print(conn)
+    try:
+        conn = conx(domain, domain_name, user_admin, passwd_admin)
+        userdn = "CN={},OU={},{}".format(
+            user['username'], user['level'], basedn)
+        print(userdn)
+        entry = {
+            "objectClass": ["person", "organizationalPerson", "user", "top"],
+            "sAMAccountName": user['username'],
+            "displayName": user['username'],
+            'userPrincipalName': "{}@{}".format(user['username'], domain_name),
+            "givenname": user['firstname'],
+            "sn": user['lastname'],
+            "mail": user['email'],
+            "employeeID": str(user['idcard']),
+            "telephoneNumber": str(user['telephone']),
+            "mobile": str(user['mobile']),
+            "Description": str(user['position']),
+            "Department": str(user['department']),
+            "Company": str(user['office']),
+            "Street": str(user['branch'])
+        }
+        print(entry)
+        conn.add(userdn, attributes=entry)
+        conn.extend.microsoft.modify_password(userdn, user['password'])
+        conn.modify(userdn, {'userAccountControl': [('MODIFY_REPLACE', 512)]})
+        conn.unbind()
+        return True
+    except:
+        conn.unbind()
         return False
-
-    conn.extend.microsoft.modify_password(userdn, user['password'])
-    conn.modify(userdn, {'userAccountControl': [('MODIFY_REPLACE', 512)]})
-
-    conn.unbind()
-    return True
 
 
 def reset_pwd_user(domain, user_admin, passwd_admin, basedn, domain_name, user):
