@@ -187,7 +187,7 @@ def new_user(domain, user_admin, passwd_admin, basedn, domain_name, user):
             "Description": str(user['idcard']),
             "telephoneNumber": str(user['telephone']),
             "mobile": str(user['mobile']),
-            "office": str(user['position']),
+            "physicalDeliveryOfficeName": str(user['position']),
             "Department": str(user['department']),
             "Company": str(user['office']),
             "Street": str(user['branch'])
