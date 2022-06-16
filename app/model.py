@@ -184,10 +184,10 @@ def new_user(domain, user_admin, passwd_admin, basedn, domain_name, user):
             "givenname": user['firstname'],
             "sn": user['lastname'],
             "mail": user['email'],
-            "employeeID": str(user['idcard']),
+            "Description": str(user['idcard']),
             "telephoneNumber": str(user['telephone']),
             "mobile": str(user['mobile']),
-            "Description": str(user['position']),
+            "office": str(user['position']),
             "Department": str(user['department']),
             "Company": str(user['office']),
             "Street": str(user['branch'])
