@@ -196,6 +196,9 @@ def new_user(domain, user_admin, passwd_admin, basedn, domain_name, user):
         conn.add(userdn, attributes=entry)
         conn.extend.microsoft.modify_password(userdn, user['password'])
         conn.modify(userdn, {'userAccountControl': [('MODIFY_REPLACE', 512)]})
+        # // use 0 instead of -1.
+        password_expire = {"pwdLastSet": (MODIFY_REPLACE, [-1])}
+        conn.modify(userdn, changes=password_expire)
         conn.unbind()
         return True
     except:
